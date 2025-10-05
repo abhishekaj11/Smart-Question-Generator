@@ -1,11 +1,12 @@
 from flask import Flask, request, render_template, redirect, url_for
-from database.connection import get_database  
+from database.connection import get_database 
 
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def register():
-    collection = get_database("SQG")
+    collection = get_database("SQG")["Login"]
+
 
     if request.method == "POST":
         email = request.form.get("email")
@@ -18,7 +19,9 @@ def register():
         if existing_user:
             return "⚠️ User already registered!"
 
-        collection.insert_one({"email": email, "password": password})
+        user = {"email": email, "password": password}
+
+        collection.insert_one(user)
         return redirect(url_for("home", user=email))  # 👈 pass email
 
     return render_template("index.html")
