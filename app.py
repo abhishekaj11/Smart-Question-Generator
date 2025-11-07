@@ -40,8 +40,8 @@ def generate():
     coursecode = request.form.get("subcode")
     collection = get_database("SQG")["syllabusC"]
     syllabus = collection.find_one({"courseCode": coursecode})
-    paper = generate_question_paper(syllabus)
-    return jsonify({"question_paper": paper})
+    #paper = generate_question_paper(syllabus)
+    return syllabus
 
 
 
