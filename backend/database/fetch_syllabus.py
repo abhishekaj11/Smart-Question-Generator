@@ -21,3 +21,7 @@ def get_syllabus(course_code):
         return None
 
     return syllabus
+
+def get_all_subjects():
+    """Fetch all subject codes and titles for dashboard table"""
+    return list(collection.find({}, {"_id": 0, "courseCode": 1, "courseTitle": 1}))

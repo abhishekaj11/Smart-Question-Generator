@@ -1,0 +1,72 @@
+body {
+  background: linear-gradient(135deg, #0c3d28, #1e7040);
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card Style */
+.auth-container .card {
+  width: 400px;
+  background: #ffffff;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+.auth-container .card:hover {
+  transform: scale(1.02);
+}
+
+/* Toggle Buttons */
+.toggle-btn-group .btn {
+  width: 45%;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.toggle-btn-group .btn.active {
+  background-color: #13aa52;
+  color: white;
+  border-color: #13aa52;
+}
+
+/* Loading Screen */
+.loader-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #d4d4d4;
+  border-top-color: #13aa52;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loader-container p {
+  margin-top: 10px;
+  color: #13aa52;
+  font-weight: 600;
+}
+
+/* Form Transition */
+.form-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.form-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
